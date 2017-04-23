@@ -75,8 +75,7 @@ public:
     {
         InternalCapacity = rhs.InternalCapacity;
         Count = rhs.Count;
-        Ptr = new value_type[InternalCapacity];
-        memcpy(Ptr, rhs.Ptr, Count * sizeof(value_type));
+        std::copy(rhs.begin(), rhs.end(), this->begin());
     }
 
     TVector& operator=(const TVector& rhs)
@@ -85,8 +84,7 @@ public:
         InternalCapacity = rhs.InternalCapacity;
         Count = rhs.Count;
         delete[] Ptr;
-        Ptr = new value_type[InternalCapacity];
-        memcpy(Ptr, rhs.Ptr, Count * sizeof(value_type));
+        std::copy(rhs.begin(), rhs.end(), this->begin());
         return *this;
     }
 
