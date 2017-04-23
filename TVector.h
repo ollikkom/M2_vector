@@ -75,6 +75,7 @@ public:
     {
         InternalCapacity = rhs.InternalCapacity;
         Count = rhs.Count;
+        Ptr = new value_type[InternalCapacity];
         std::copy(rhs.begin(), rhs.end(), this->begin());
     }
 
@@ -83,6 +84,7 @@ public:
         if (this == &rhs) return *this;
         InternalCapacity = rhs.InternalCapacity;
         Count = rhs.Count;
+        Ptr = new value_type[InternalCapacity];
         std::copy(rhs.begin(), rhs.end(), this->begin());
         return *this;
     }
