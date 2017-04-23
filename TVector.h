@@ -65,7 +65,7 @@ public:
     {
         if (InternalCapacity > size) return;
         value_type *pP = new value_type[size];
-        memcpy(pP, Ptr, Count * sizeof(value_type));
+        std::copy(this->begin(), this->end(), pP);
         delete[] Ptr;
         Ptr = pP;
         InternalCapacity = size;
@@ -83,7 +83,6 @@ public:
         if (this == &rhs) return *this;
         InternalCapacity = rhs.InternalCapacity;
         Count = rhs.Count;
-        delete[] Ptr;
         std::copy(rhs.begin(), rhs.end(), this->begin());
         return *this;
     }
